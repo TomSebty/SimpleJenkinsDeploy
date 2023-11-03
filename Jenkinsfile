@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy container'){
             steps{
                 script{
-                    sh 'docker run --name counter-app -p 80:80 counter-app'
+                    sh 'docker run --name counter-app -dp 80:80 counter-app'
                 }
             }
         }
