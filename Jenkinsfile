@@ -17,5 +17,18 @@ pipeline {
                 }
             }
         }
+        stage('Test URL Availability') {
+            steps {
+                script {
+                    def url = 'http://ec2-52-57-150-144.eu-central-1.compute.amazonaws.com/'
+                    def response = sh(script: "curl --write-out '%{http_code}' --silent --output /dev/null ${url}", returnStatus: true)
+
+                    if (response != 200) {
+                        currentBuild.result = 'FAILURE'
+                        error("URL ${url} is unavailable (HTTP status code: ${response})")
+                    }
+                }
+            }
+        }
     }
 }
