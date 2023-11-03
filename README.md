@@ -7,3 +7,4 @@ This project is about deploying a web service with Jenkins when a commit is made
     Credentials:
     - Username: admin
     - Password: admin
+test
