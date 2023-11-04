@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     def url = 'http://ec2-52-57-150-144.eu-central-1.compute.amazonaws.com/'
-                    def response = sh(script: "curl --write-out '%{http_code}' --silent --output /dev/null ${url}", returnStatus: true)
+                    def response = sh(script: "curl --write-out '%{http_code}' --silent --output /dev/null ${url}", returnStdout: true)
 
                     if (response != 200) {
                         currentBuild.result = 'FAILURE'
